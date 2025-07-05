@@ -69,6 +69,7 @@ export function MeasureTime(target: any, context: any): void {
     const methodName = context.name;
     context.addInitializer(function (this: any) {
         const originalMethod = this[methodName];
+        console.log(originalMethod);
         this[methodName] = function (...args: any[]) {
             const start = performance.now();
             const result = originalMethod.call(this, ...args);

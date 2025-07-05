@@ -1,0 +1,32 @@
+{
+  "name": "angular-decorators-ng-kenya-2025",
+  "version": "1.0.0",
+  "description": "TypeScript decorators examples for NG Kenya 2025",
+  "main": "dist/main.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "build:legacy": "tsc --project tsconfig.legacy.json",
+    "build:new-api": "tsc --project tsconfig.new-api.json",
+    "build:all": "npm run build:legacy && npm run build:new-api",
+    "start": "node dist/main.js",
+    "start:legacy": "node dist/code-lab-debounce-legacy.decorator.js",
+    "start:new-api": "node dist/code-lab-debounce.decorator.js",
+    "clean": "rm -rf dist",
+    "clean:win": "if exist dist rmdir /s /q dist",
+    "dev": "tsc && node dist/main.js",
+    "dev:legacy": "npm run build:legacy && npm run start:legacy",
+    "dev:new-api": "npm run build:new-api && npm run start:new-api"
+  },
+  "keywords": [
+    "typescript",
+    "decorators",
+    "angular",
+    "ng-kenya"
+  ],
+  "author": "NG Kenya 2025",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+} 

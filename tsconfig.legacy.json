@@ -2,7 +2,10 @@
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
     "experimentalDecorators": true,
-    "useDefineForClassFields": true,
+    "useDefineForClassFields": false,
     "emitDecoratorMetadata": true
-  }
+  },
+  "include": [
+    "code-lab-debounce-legacy.decorator.ts"
+  ]
 } 

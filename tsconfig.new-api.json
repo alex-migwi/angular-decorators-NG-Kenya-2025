@@ -4,5 +4,11 @@
     "experimentalDecorators": true,
     "useDefineForClassFields": true,
     "emitDecoratorMetadata": true
-  }
+  },
+  "include": [
+    "code-lab-debounce.decorator.ts",
+    "decorators.ts",
+    "main.ts",
+    "override-functionality.ts"
+  ]
 } 

@@ -378,30 +378,43 @@ function fromObservable<T>(obs$: Observable<T>, initial: T) {
 
 ```ts
 function Debounce(ms: number) {
-  return function (target: any, propertyKey: string, descriptor: PropertyDescriptor): PropertyDescriptor {
-    const original = descriptor.value;
-    let timeoutId: NodeJS.Timeout;
-    
-    descriptor.value = function (...args: any[]) {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => {
-        original.apply(this, args);
-      }, ms);
+    return function (target: any, propertyKey: string, descriptor: PropertyDescriptor): PropertyDescriptor {
+        console.log("Inside the debounce decorator");
+        const original = descriptor.value;
+      let timeoutId: number;
+      
+      descriptor.value = function (...args: any[]) {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => {
+          original.apply(this, args);
+        }, ms);
+      };
+      
+      return descriptor;
     };
-    
-    return descriptor;
-  };
-}
+  }
+
+  class SearchComponent {
+    @Debounce(300)
+    onSearch(query: string) {
+      // This will only execute after 300ms of no calls
+      console.log('I waited for 300 ms to do nothing.... arghhhh!');
+    }
+  }
 ```
 
 **Usage:**
 ```ts
-class SearchComponent {
-  @Debounce(300)
-  onSearch(query: string) {
-    // This will only execute after 300ms of no calls
-  }
-}
+  // Test the debounce functionality
+  const searchComponent = new SearchComponent();
+  
+  console.log('Calling onSearch multiple times quickly...');
+  searchComponent.onSearch('test1');
+  searchComponent.onSearch('test2');
+  searchComponent.onSearch('test3');
+  
+  // The original method will only execute once after 300ms
+  // because the debounce decorator delays execution and cancels previous calls
 ```
 
 ---

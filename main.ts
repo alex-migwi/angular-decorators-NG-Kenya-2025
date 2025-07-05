@@ -48,7 +48,7 @@ class ExampleService {
 const service = new ExampleService();
 
 // Call the decorated method to see the decorators in action
-service.fetchData("https://api.example.com");
+service.fetchData("https://jsonplaceholder.typicode.com/todos/1");
 
 // Expected output:
 // [LogProperty] Property: message
